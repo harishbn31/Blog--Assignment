@@ -1,0 +1,26 @@
+<h2>Add article</h2>
+
+<%= form_for @article do |a| %>
+
+	<% if @article.errors.any? %>
+	<h3>The errors</h3>
+	<ul>
+		<% @article.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+	<% end %>
+
+	<label>Title : </label><br/>
+	<%= a.text_field :title, placeholder: "Enter the article name", autofocus: true %><br/><br/>
+	<label>Body : </label><br/>
+	<%= a.text_area :body, placeholder: "Enter the body" %><br/><br/>
+
+	<label>Category Name : </label><br/>
+	<%= a.collection_check_boxes :category_ids, Category.all, :id, :name, prompt: "Select category" %><br/><br/>
+	<label>Published date :</label><br/>
+	<%= a.date_field :published_date%><br/><br/>
+
+	<%= a.submit %> 
+ 
+<% end %>

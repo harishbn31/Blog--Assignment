@@ -1,0 +1,19 @@
+<h2> <font color = "blue">Listing articles</h2>
+
+  <font color = "green"> <%= @category.name%> 
+ 
+<table>
+  
+<% if @category.articles.empty? %>
+	<p>No articles found</p>
+<% else %>
+	<ul>
+		<% @category.articles.each do |article| %>
+		<li><%= link_to article.title, article_path(article) %></li>
+			<% end %>
+	</ul>	
+
+<% end %>
+</table>
+
+
